@@ -1,0 +1,20 @@
+name: Run Datagram Node
+
+on:
+  workflow_dispatch:  # bisa dijalankan manual
+
+jobs:
+  run-datagram:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Download Datagram CLI
+        run: |
+          wget https://github.com/Datagram-Group/datagram-cli-release/releases/latest/download/datagram-cli-x86_64-linux -O datagram-cli
+          chmod +x datagram-cli
+
+      - name: Run Datagram
+        run: ./datagram-cli run -- -key 71703d4b5213abe0cf17b81f9414eb42
